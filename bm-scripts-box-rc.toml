@@ -1,0 +1,188 @@
+[bmscriptsbox]
+
+[bmscriptsbox.info]
+id = "6e5128f3-3cd0-4b0e-8c5e-141e0d0cf6b4"
+name = "C盘清理"
+desc = "C盘清理 | 临时文件,浏览器缓存,Winapp2软件缓存,缩略图,着色器缓存,回收站,系统还原点,休眠文件 | 预览扫描与一键清理,释放C盘空间"
+version = "1.0.0"
+icon = "./imgs/logo.png"
+
+[bmscriptsbox.runtime]
+language = "python"
+language_version = ">=3.8"
+entry = "main.py"
+terminal = "always"
+
+[bmscriptsbox.params_form]
+enabled = true
+
+[[bmscriptsbox.params]]
+name = "action"
+label = "操作"
+type = "str"
+default = "scan"
+choices = ["scan", "clean"]
+choice_labels = { scan = "预览扫描（不删除）", clean = "执行清理" }
+
+[[bmscriptsbox.params]]
+name = "preset"
+label = "清理范围"
+type = "str"
+default = "safe"
+choices = ["safe", "quick", "all", "custom"]
+choice_labels = { safe = "安全快速清理", quick = "原版快速清理", all = "全部清理项", custom = "自定义清理项" }
+
+[[bmscriptsbox.params]]
+name = "allow_risky"
+label = "允许高风险项"
+type = "bool"
+default = false
+when = { field = "preset", in = ["quick", "all"] }
+description = "还原点、休眠文件、MSP 文件、回收站；默认关闭"
+
+[[bmscriptsbox.params]]
+name = "opt_prefetch"
+label = "预读取缓存"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_user_temp"
+label = "用户临时文件"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_windows_temp"
+label = "系统临时文件"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_system_logs"
+label = "系统日志"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_software_distribution"
+label = "更新下载缓存"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_browser_cache"
+label = "浏览器缓存"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_temp_files_c"
+label = "C 盘临时文件"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_log_files_c"
+label = "C 盘日志文件"
+type = "bool"
+default = false
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_restore_points"
+label = "系统还原点（高风险）"
+type = "bool"
+default = false
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_hibernation"
+label = "休眠文件（高风险）"
+type = "bool"
+default = false
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_delivery_optimization"
+label = "分发优化缓存"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_thumbnails"
+label = "缩略图缓存"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_defender"
+label = "Defender 扫描历史"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_inet_cache"
+label = "INetCache"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_wer_reports"
+label = "错误报告"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_shader_cache"
+label = "着色器缓存"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_nvidia_debug_logs"
+label = "NVIDIA 调试日志"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_wps_backups"
+label = "WPS 备份"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_winapp2"
+label = "软件缓存（Winapp2）"
+type = "bool"
+default = true
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_recycle_bin"
+label = "回收站（高风险）"
+type = "bool"
+default = false
+when = { field = "preset", eq = "custom" }
+
+[[bmscriptsbox.params]]
+name = "opt_msp_files"
+label = ".msp 文件（高风险）"
+type = "bool"
+default = false
+when = { field = "preset", eq = "custom" }

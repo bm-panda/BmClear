@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wclean"
+version = "0.1.0"
+description = "Windows C drive cleaner CLI"
+requires-python = ">=3.8"
+dependencies = []
+
+[project.scripts]
+wclean = "wclean.cli:main"
+
+[tool.setuptools]
+packages = ["wclean"]
+
+[tool.setuptools.data-files]
+"resources" = ["resources/Winapp2.ini"]
